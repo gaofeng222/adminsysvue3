@@ -1,17 +1,41 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/login",
+    name: "Login",
+    component: () => import("@/views/login/loginPage.vue"),
   },
   {
-    path: "/about",
-    name: "About",
-    component: About,
+    path: "/",
+    component: () => import("@/layout/index.vue"),
+    redirect: "/article/manage",
+    children: [
+      {
+        path: "/article/manage",
+        component: () => import("@/views/article/ArticleManage.vue"),
+      },
+      {
+        path: "/article/channel",
+        component: () => import("@/views/article/ArticleChannel.vue"),
+      },
+      {
+        path: "/user/profile",
+        component: () => import("@/views/user/UserProfile.vue"),
+      },
+      {
+        path: "/user/avatar",
+        component: () => import("@/views/user/UserAvatar.vue"),
+      },
+      {
+        path: "/user/password",
+        component: () => import("@/views/user/UserPassword.vue"),
+      },
+      {
+        path: "/user/profile",
+        component: () => import("@/views/user/UserProfile.vue"),
+      },
+    ],
   },
 ];
 
