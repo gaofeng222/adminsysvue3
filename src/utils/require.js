@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useUserStore } from "@/store/modules";
-// import { ElMessage } from "element-plus";
 import router from "@/router";
 // 创建一个 Axios 实例
 const instance = axios.create({
@@ -47,10 +46,11 @@ instance.interceptors.response.use(
     return Promise.reject(response.data);
   },
   function (error) {
+    console.log("🚀 ~ error:", error);
     // 对响应错误做点什么
 
     // 获取错误状态码
-    const status = error.response.status;
+    const status = error.response?.status;
     // 根据状态码进行相应处理
     let message = "";
     switch (status) {
