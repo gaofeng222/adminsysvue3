@@ -17,3 +17,87 @@ https://big-event-vue-api-t.itheima.net
 参考网站
 
 https://fe-bigevent-web.itheima.net/login
+
+```
+adminsysvue3
+├─ .git
+│  ├─ config
+│  ├─ description
+│  ├─ HEAD
+│  ├─ hooks
+│  │  ├─ applypatch-msg.sample
+│  │  ├─ commit-msg.sample
+│  │  ├─ fsmonitor-watchman.sample
+│  │  ├─ post-update.sample
+│  │  ├─ pre-applypatch.sample
+│  │  ├─ pre-commit.sample
+│  │  ├─ pre-merge-commit.sample
+│  │  ├─ pre-push.sample
+│  │  ├─ pre-rebase.sample
+│  │  ├─ pre-receive.sample
+│  │  ├─ prepare-commit-msg.sample
+│  │  ├─ push-to-checkout.sample
+│  │  └─ update.sample
+│  ├─ index
+│  ├─ info
+│  │  └─ exclude
+│  ├─ objects
+│  │  ├─ info
+│  │  └─ pack
+│  │     ├─ pack-44dd5b932df8301180ca9fa78e67cde3d93b13a5.idx
+│  │     └─ pack-44dd5b932df8301180ca9fa78e67cde3d93b13a5.pack
+│  ├─ packed-refs
+│  └─ refs
+│     ├─ heads
+│     │  └─ master
+│     ├─ remotes
+│     │  └─ origin
+│     │     └─ HEAD
+│     └─ tags
+├─ .gitignore
+├─ index.html
+├─ package.json
+├─ pnpm-lock.yaml
+├─ public
+│  └─ vite.svg
+├─ README.md
+├─ src
+│  ├─ api
+│  │  └─ index.js
+│  ├─ App.vue
+│  ├─ assets
+│  │  ├─ images
+│  │  │  ├─ login_bg.jpg
+│  │  │  └─ logo2.png
+│  │  └─ vue.svg
+│  ├─ layout
+│  │  └─ index.vue
+│  ├─ main.js
+│  ├─ router
+│  │  ├─ index.js
+│  │  └─ persmisson.js
+│  ├─ store
+│  │  ├─ index.js
+│  │  └─ modules
+│  │     ├─ counter.js
+│  │     ├─ index.js
+│  │     └─ user.js
+│  ├─ style.css
+│  ├─ utils
+│  │  └─ require.js
+│  └─ views
+│     ├─ About.vue
+│     ├─ article
+│     │  ├─ ArticleChannel.vue
+│     │  └─ ArticleManage.vue
+│     ├─ Home.vue
+│     ├─ login
+│     │  └─ loginPage.vue
+│     └─ user
+│        ├─ UserAvatar.vue
+│        ├─ UserPassword.vue
+│        └─ UserProfile.vue
+├─ vite.config.js
+└─ vite.config.js.timestamp-1713147247032-eb83f6b7a12ac.mjs
+
+```

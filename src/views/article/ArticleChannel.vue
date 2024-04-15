@@ -1,1 +1,3 @@
-<template>文章频道</template>
+<template>
+  <div>文章频道</div>
+</template>

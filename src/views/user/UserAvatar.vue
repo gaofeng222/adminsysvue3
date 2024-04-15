@@ -1,1 +1,1 @@
-<template>用户头像</template>
+<template><div>用户头像</div></template>
