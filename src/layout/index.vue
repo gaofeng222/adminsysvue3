@@ -63,6 +63,9 @@
             <i-ep-Expand v-if="isCollapsed" />
             <i-ep-Fold v-else />
           </el-icon>
+          <el-breadcrumb separator=">">
+            <el-breadcrumb-item v-for="menu in breadMenus" :to="{ path: menu.path }">{{ menu.name}}</el-breadcrumb-item>
+          </el-breadcrumb>
         </div>
         <div class="right-a">
           <el-avatar :size="50" :src="avatarUrl" />
@@ -102,9 +105,14 @@
 </template>
 <script setup>
 import { useSettingStore, useUserStore } from "@/store/modules";
+import { ElMessage } from "element-plus";
+import { watch } from "vue";
+
 const settingStore = useSettingStore();
 const userStore = useUserStore();
 const router = useRouter();
+const routes = useRoute();
+console.log("🚀 ~ routes:", routes);
 const toggleSideBar = () => {
   settingStore.toggleCollapse();
 };
@@ -116,10 +124,22 @@ const avatarUrl =
 const handleCommand = type => {
   if (type === "logout") {
     userStore.removeToken();
+    ElMessage.success("退出成功");
     router.replace("/login");
   }
 };
 const username = computed(() => userStore.useInfo.username);
+const breadMenus = ref(null);
+watch(
+  () => routes.path,
+  newValue => {
+    console.log("🚀 ~ newValue:", routes);
+    breadMenus.value = routes.matched;
+  },
+  {
+    immediate: true
+  }
+);
 </script>
 <style lang="scss" scoped>
 .el-aside__logo {
