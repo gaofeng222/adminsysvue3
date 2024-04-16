@@ -1,3 +1,6 @@
 <template>
-  <div>文章频道</div>
+  <div>
+    <p>文章频道</p>
+    <AIcon name="menu" />
+  </div>
 </template>
