@@ -35,3 +35,7 @@ body {
 .fade-leave-to {
   opacity: 0;
 }
+
+:focus-visible {
+  outline: 0;
+}
