@@ -14,9 +14,15 @@ https://apifox.com/apidoc/shared-26c67aee-0233-4d23-aab7-08448fdf95ff/ap1-938508
 
 https://big-event-vue-api-t.itheima.net
 
-参考网站
+## 参考网站
 
 https://fe-bigevent-web.itheima.net/login
+
+## 效果预览
+
+![alt text](./public/image.png)
+
+![alt text](./public/image-1.png)
 
 ```
 adminsysvue3
