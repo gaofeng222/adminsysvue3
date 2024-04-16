@@ -9,6 +9,7 @@
         autocomplete="off"
         :rules="rulesRegister"
         v-if="isRegister"
+        @keyup.enter="registerHandler"
       >
         <el-form-item>
           <h2>注册</h2>
@@ -64,6 +65,7 @@
         ref="formLoginRef"
         size="large"
         autocomplete="off"
+        @keyup.enter="loginHandler"
       >
         <el-form-item>
           <h2>登录</h2>

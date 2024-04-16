@@ -16,7 +16,7 @@ instance.interceptors.request.use(
     // 在发送请求之前做些什么
     loading = ElLoading.service({
       lock: true,
-      text: "Loading...",
+      text: "记载中...",
       background: "rgba(0, 0, 0, 0.5)",
     });
     const userStore = useUserStore();
