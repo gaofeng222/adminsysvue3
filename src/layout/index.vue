@@ -16,7 +16,7 @@
             <i-ep-Expand v-if="isCollapsed" />
             <i-ep-Fold v-else />
           </el-icon>
-          <BreadMenus :breadMenus="breadMenus" />
+          <bread-menus :breadMenus="breadMenus" />
         </div>
         <div class="right-a">
           <el-avatar :size="50" :src="avatarUrl" />
@@ -29,8 +29,6 @@
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item :icon="Plus">Action 1</el-dropdown-item>
-                <el-dropdown-item :icon="CirclePlusFilled">Action 2</el-dropdown-item>
                 <el-dropdown-item command="logout">
                   <el-icon>
                     <i-ep-switch-button />
@@ -42,13 +40,13 @@
         </div>
       </el-header>
       <el-main>
-        <el-card class="page-container">
-          <router-view v-slot="{ Component, route }">
-            <transition appear name="fade" mode="out-in">
-              <component :is="Component" :key="route.path" />
-            </transition>
-          </router-view>
-        </el-card>
+        <!-- <el-card class="page-container"> -->
+        <router-view v-slot="{ Component, route }">
+          <transition appear name="fade" mode="out-in">
+            <component :is="Component" :key="route.path" />
+          </transition>
+        </router-view>
+        <!-- </el-card> -->
       </el-main>
       <el-footer>高峰的后台管理系统V3 ©2024 Created by gaofeng222</el-footer>
     </el-container>
