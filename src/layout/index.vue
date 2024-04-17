@@ -7,54 +7,7 @@
           <i-ep-Shop />
         </el-icon>
       </div>
-      <el-menu
-        active-text-color="#ffd04b"
-        background-color="#232323"
-        class="el-menu-vertical-demo"
-        :default-active="$route.path"
-        text-color="#fff"
-        router
-        :collapse="isCollapsed"
-      >
-        <el-menu-item index="/article/channel">
-          <el-icon>
-            <i-ep-menu />
-          </el-icon>
-          <span>文章分类</span>
-        </el-menu-item>
-        <el-menu-item index="/article/manage">
-          <el-icon>
-            <i-ep-document />
-          </el-icon>
-          <span>文章管理</span>
-        </el-menu-item>
-        <el-sub-menu index="/user">
-          <template #title>
-            <el-icon>
-              <i-ep-user-filled />
-            </el-icon>
-            <span>个人中心</span>
-          </template>
-          <el-menu-item index="/user/profile">
-            <el-icon>
-              <i-ep-user />
-            </el-icon>
-            <span>基本资料</span>
-          </el-menu-item>
-          <el-menu-item index="/user/avatar">
-            <el-icon>
-              <i-ep-avatar />
-            </el-icon>
-            <span>更换头像</span>
-          </el-menu-item>
-          <el-menu-item index="/user/password">
-            <el-icon>
-              <i-ep-edit />
-            </el-icon>
-            <span>重置密码</span>
-          </el-menu-item>
-        </el-sub-menu>
-      </el-menu>
+      <Menu />
     </el-aside>
     <el-container>
       <el-header>
@@ -63,9 +16,7 @@
             <i-ep-Expand v-if="isCollapsed" />
             <i-ep-Fold v-else />
           </el-icon>
-          <el-breadcrumb separator=">">
-            <el-breadcrumb-item v-for="menu in breadMenus" :to="{ path: menu.path }">{{ menu.name}}</el-breadcrumb-item>
-          </el-breadcrumb>
+          <bread-menus :breadMenus="breadMenus" />
         </div>
         <div class="right-a">
           <el-avatar :size="50" :src="avatarUrl" />
@@ -78,8 +29,6 @@
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item :icon="Plus">Action 1</el-dropdown-item>
-                <el-dropdown-item :icon="CirclePlusFilled">Action 2</el-dropdown-item>
                 <el-dropdown-item command="logout">
                   <el-icon>
                     <i-ep-switch-button />
@@ -91,28 +40,27 @@
         </div>
       </el-header>
       <el-main>
-        <el-card class="page-container">
-          <router-view v-slot="{ Component, route }">
-            <transition appear name="fade" mode="out-in">
-              <component :is="Component" :key="route.path" />
-            </transition>
-          </router-view>
-        </el-card>
+        <!-- <el-card class="page-container"> -->
+        <router-view v-slot="{ Component, route }">
+          <transition appear name="fade" mode="out-in">
+            <component :is="Component" :key="route.path" />
+          </transition>
+        </router-view>
+        <!-- </el-card> -->
       </el-main>
       <el-footer>高峰的后台管理系统V3 ©2024 Created by gaofeng222</el-footer>
     </el-container>
   </el-container>
 </template>
 <script setup>
+import Menu from "@/components/sideMenu/index.vue";
+import BreadMenus from "@/components/breadmenus/index.vue";
 import { useSettingStore, useUserStore } from "@/store/modules";
-import { ElMessage } from "element-plus";
-import { watch } from "vue";
-
 const settingStore = useSettingStore();
 const userStore = useUserStore();
+
 const router = useRouter();
 const routes = useRoute();
-console.log("🚀 ~ routes:", routes);
 const toggleSideBar = () => {
   settingStore.toggleCollapse();
 };
@@ -123,17 +71,16 @@ const avatarUrl =
 
 const handleCommand = type => {
   if (type === "logout") {
-    userStore.removeToken();
     ElMessage.success("退出成功");
+    userStore.removeToken();
     router.replace("/login");
   }
 };
-const username = computed(() => userStore.useInfo.username);
+const username = computed(() => userStore.useInfo?.username);
 const breadMenus = ref(null);
 watch(
   () => routes.path,
   newValue => {
-    console.log("🚀 ~ newValue:", routes);
     breadMenus.value = routes.matched;
   },
   {
